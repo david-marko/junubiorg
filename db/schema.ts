@@ -68,6 +68,38 @@ export const dataset = pgTable('dataset', {
         .$onUpdate(() => new Date()),
 })
 
+export const jobs = pgTable('jobs', {
+    id: serial('id').primaryKey(),
+    orgId: integer('orgId')
+        .notNull()
+        .references(() => orgs.id, { onDelete: 'cascade' }),
+    title: text('title'),
+    desc: text('desc'),
+    kind: varchar('kind'), // contract, internship, job, training
+    location: text('location'),
+    obligations: text('obligations'),
+    experience: jsonb('experieince'),
+    education: jsonb('education'),
+    contact: jsonb('contact'),
+    attachment: jsonb('attachment'),
+    expiry: date('expiry').notNull(),
+    status: varchar('status').default('draft'), // draft, published
+    views: integer('views').default(0),
+})
+
+export const applicants = pgTable('applicants', {
+    id: serial('id').primaryKey(),
+    jobId: integer('jobId')
+        .notNull()
+        .references(() => jobs.id, { onDelete: 'cascade' }),
+    fullName: varchar('fullName'),
+    email: varchar('email').notNull(),
+    attachments: jsonb('attachments'),
+    meta: jsonb('meta'), // extract CV data via ATS
+    label: varchar('label').default('Applied'), // Applied, Shortlisted, Interviewed, Hired.
+    createdAt: timestamp('createdAt').notNull().defaultNow(),
+})
+
 export const data = pgTable('data', {
     id: serial('id').primaryKey(),
     setId: integer('setId')
