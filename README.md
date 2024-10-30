@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Junubi.org: Open Data for Everyone
+Junubi.org is an open-source platform designed to be a central hub for sharing and accessing valuable datasets, opportunities, and information. Our goal is to empower communities by making data readily available and fostering collaboration.
 
-## Getting Started
+# What You Can Do with Junubi.org
+- Share Data: Upload and publish datasets of any kind, from scientific research to social impact studies.
+- Find Data: Explore a comprehensive collection of datasets across diverse disciplines.
+- Discover Opportunities: Learn about grants, workshops, and other relevant events.
+- Stay Informed: Access curated information resources on various topics.
+- Collaborate: Connect with other data enthusiasts and researchers.
 
-First, run the development server:
+# Contributing to Junubi.org
+Junubi.org is open-source and welcomes contributions from the community! You can help in several ways:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Spread the Word: Share Junubi.org with your network and encourage others to use it.
+- Contribute Data: Upload valuable datasets and make them accessible to a wider audience.
+- Develop Code: Help improve the platform by contributing to the codebase (if you're comfortable with coding).
+- Report Issues: Find a bug? Let us know and help us fix it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Getting Started with Junubi.org
+- Visit Junubi.org: Head over to https://junubi.org/ to explore the platform.
+- Create an Account: Register for a free account to upload data, participate in discussions, and contribute to the community.
+- Browse Datasets: Discover existing datasets by category, keyword, or other search options.
+- Upload Your Data: Share your datasets by following the simple upload process.
+- Connect and Collaborate: Join the Junubi.org community forum to discuss data, projects, and opportunities.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Installation and Development (For Developers)
+Junubi.org is an open-source project built with [Python, NextJS]. Developers can contribute to the codebase by following these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Clone the Repository: Use Git to clone the Junubi.org repository from [insert repository link].
+- Set Up Development Environment: Install the necessary dependencies according to the provided documentation.
+- Run the Application: Follow the instructions to start the Junubi.org development server locally.
+- Contribute Code: Make your changes to the codebase, write unit tests, and submit a pull request.
+We encourage everyone to explore Junubi.org and participate in building a robust open-data ecosystem.
 
-## Learn More
+For further information, please refer to the following resources:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project Website: https://junubi.org/
+Documentation: [docs](https://junubi.org/documentation)
+Telegram Community: [here](https://t.me/junubiorg/)
+Github Repository: https://github.com/junubiorg
