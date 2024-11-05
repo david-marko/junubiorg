@@ -3,6 +3,7 @@ import "./globals.css";
 import { auth } from "@/lib/auth";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Junubi | Open Data Portal",
@@ -20,6 +21,7 @@ export default async function RootLayout({
       <body
         className={`antialiased`}
       >
+        <Toaster />
         <Header session={session} />
         {children}
         <Footer />

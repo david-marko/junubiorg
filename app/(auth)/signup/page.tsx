@@ -1,41 +1,49 @@
-import { users } from "@/db/schema"
-import { signIn } from "@/lib/auth"
-import { db } from "@/lib/db"
+'use client'
+
+import { toast } from "@/hooks/use-toast";
+import { useEffect } from "react";
+import { useFormState } from "react-dom";
+import { signUpAction } from "./action";
+import { SubmitButton } from "@/components/submit-button";
+
+const initialState = {
+    message: '',
+}
 
 export default function SignUp() {
-    async function handleSubmit(formData: FormData) {
-        "use server"
-        let user = {
-            email: formData.get('email') as string,
-            password: formData.get('password') as string,
-            name: formData.get('name') as string,
-            role: 'User',
+    const [state, formAction] = useFormState(signUpAction, initialState);
+
+    useEffect(() => {
+        if (state.message) {
+            toast({
+                title: state.message,
+                variant: "destructive",
+            })
         }
-        await db.insert(users).values(user).returning()
-        try {
-            await signIn("credentials", formData)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    }, [state.message])
     return (
-        <form
-            action={handleSubmit}
-            className="flex flex-col gap-2 mx-auto w-1/2 p-4 bg-white rounded-lg shadow-md"
-        >
-            <label>
-                Email
-                <input name="email" type="email" className="border-2 border-gray-300 rounded-md p-2" />
-            </label>
-            <label>
-                Name
-                <input name="name" type="text" className="border-2 border-gray-300 rounded-md p-2" />
-            </label>
-            <label>
-                Password
-                <input name="password" type="password" className="border-2 border-gray-300 rounded-md p-2" />
-            </label>
-            <button className="bg-blue-500 text-white p-2 rounded-md">Sign Up</button>
-        </form>
+        <div className="flex flex-col items-center justify-center h-[calc(100vh-200px)] w-full p-4">
+            <form action={formAction} className="flex flex-col gap-4 bg-white p-4 rounded-md shadow-md min-w-[400px] w-full md:w-1/2">
+                <div className="flex flex-col gap-2">
+                    <label>
+                        Name
+                    </label>
+                    <input name="name" required type="text" placeholder="Your name" className="border border-gray-300 rounded-md p-2" />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label>
+                        Email
+                    </label>
+                    <input name="email" required type="email" placeholder="Your email" className="border border-gray-300 rounded-md p-2" />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label>
+                        Password
+                    </label>
+                    <input name="password" required type="password" placeholder="Your password" className="border border-gray-300 rounded-md p-2" />
+                </div>
+                <SubmitButton text="Sign Up" />
+            </form>
+        </div>
     )
 }
