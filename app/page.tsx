@@ -13,11 +13,15 @@ export default async function Home() {
     'Security',
     'Transport',
     'Agriculture',
-    'Government',
-    'Security',
-    'Transport',
-    'Agriculture',
-    'Other',
+    'Technology',
+    'Tourism',
+    'Energy',
+    'Sports',
+    'Arts & Culture',
+    'Finance',
+    'Real Estate',
+    'Retail',
+    'Others',
   ];
 
   const topAgencies = [
@@ -92,7 +96,7 @@ export default async function Home() {
       <div className="my-2"> </div>
       <div className="flex flex-col gap-2 py-8">
         <h2 className="text-2xl md:text-4xl py-4 text-center">
-          <span className="font-bold"> 4000+ </span> datasets, <span className="font-bold"> 100+ </span> Organizations, <span className="font-bold"> 100+ </span> Jobs
+          <span className="font-bold"> 400+ </span> datasets, <span className="font-bold"> 100+ </span> Organizations, <span className="font-bold"> 100+ </span> Jobs
         </h2>
         <div className="w-full px-4 md:w-4/5 md:mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center">

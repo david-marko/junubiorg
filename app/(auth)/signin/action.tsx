@@ -1,9 +1,7 @@
 "use server"
 
-import { users } from "@/db/schema";
-import { signIn } from "@/lib/auth"
-import { db } from "@/lib/db";
-import { eq } from "drizzle-orm";
+import { signIn } from "@/lib/auth";
+import { AuthError } from "next-auth";
 import { z } from "zod";
 
 const signInSchema = z.object({
@@ -18,13 +16,34 @@ export async function signInAction(currentState: any, formData: FormData) {
             message: "Invalid Details"
         }
     }
+    let user = null
     try {
-        await signIn("credentials", parsedData.data)
+        user = await signIn("credentials", parsedData.data)
+    } catch (error) {
+        if (error instanceof Error) {
+			const { type, cause } = error as AuthError;
+			switch (type) {
+				case "CredentialsSignin":
+					return {
+                        message: "Invalid credentials"
+                    }
+				case "CallbackRouteError":
+					return {
+                        message: cause?.err?.toString()
+                    }
+				default:
+					return {
+                        message: "Signed in successfully"
+                    }
+            }
+        }
+    }
+    if (user) {
         return {
             message: "Signed in successfully"
         }
-    } catch (error) {
-        // console.log(error)
+    }
+    else {
         return {
             message: "Invalid credentials"
         }

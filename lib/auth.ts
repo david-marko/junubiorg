@@ -5,7 +5,6 @@ import { db } from "./db"
 import { users } from "@/db/schema"
 import { and, eq } from "drizzle-orm"
 
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
         Credentials({
@@ -19,11 +18,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 let user = null
 
                 // logic to salt and hash password
-                const pwHash = saltAndHashPassword(credentials.password as string)
+                const pwHash = saltAndHashPassword(credentials.password as string) as string;
                 user = await db.select().from(users).where(and(eq(users.email, credentials.email as string), eq(users.password, pwHash)));
                 // logic to verify if the user exists
                 // user = await getUserFromDb(credentials.email, pwHash)
-                if (!user || user.length === 0) {
+                if (!user || user.length == 0) {
                     // No user found, so this is their first attempt to login
                     // Optionally, this is also the place you could do a user registration
                     throw new Error("Invalid credentials.")

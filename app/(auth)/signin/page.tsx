@@ -5,6 +5,7 @@ import { signInAction } from "./action"
 import { useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { SubmitButton } from "@/components/submit-button";
+import { useRouter } from "next/navigation";
 
 const initialState = {
     message: '',
@@ -12,15 +13,24 @@ const initialState = {
 
 export default function SignIn() {
     const [state, formAction] = useFormState(signInAction, initialState);
-
+    const router = useRouter();
     useEffect(() => {
-        if (state.message && state.message == 'Invalid credentials') {
-            toast({
-                title: state.message,
+        if (state && state.message) {
+            if (state.message == 'Invalid credentials') {
+                toast({
+                    title: state.message,
                 variant: "destructive",
-            })
+                })
+            }
+            else if (state.message == 'Signed in successfully') {
+                toast({
+                    title: state.message,
+                })
+                // redirect to home page
+                router.push('/')
+            }
         }
-    }, [state.message])
+    }, [state])
     return (
         <div className="flex flex-col items-center justify-center h-[calc(100vh-200px)] w-full p-4">
             <form action={formAction} className="flex flex-col gap-4 bg-white p-4 rounded-md shadow-md min-w-[400px]">
