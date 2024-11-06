@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { auth } from "@/lib/auth";
+import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { Toaster } from "@/components/ui/toaster";
+import DashHeader from "@/components/dashHeader";
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata: Metadata = {
   title: "Junubi | Open Data Portal",
@@ -21,10 +23,11 @@ export default async function RootLayout({
       <body
         className={`antialiased`}
       >
+        <NextTopLoader />
         <Toaster />
-        <Header session={session} />
+        {session ? <DashHeader session={session} /> : <Header session={session} />}
         {children}
-        <Footer />
+        {session == null && <Footer />}
       </body>
     </html>
   );
