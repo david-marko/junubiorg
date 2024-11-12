@@ -16,6 +16,7 @@ export const orgs = pgTable('orgs', {
         .notNull()
         .references(() => users.id, { onDelete: 'cascade' }),
     name: text('name').notNull(),
+    slug: text('slug').notNull(),
     country: varchar('country'),
     kind: varchar('kind').notNull(),
     bio: text('bio'),
@@ -62,6 +63,8 @@ export const dataset = pgTable('dataset', {
     format: varchar('format'), // pdf, xlsx, kmz, kml, csv, geojson, wp_json
     apiAccess: boolean('apiAccess').default(false),
     meta: jsonb('meta'),
+    views: integer('views').default(0),
+    downloads: integer('downloads').default(0),
     createdAt: timestamp('createdAt').notNull().defaultNow(),
     updatedAt: timestamp('updatedAt')
         .notNull()
