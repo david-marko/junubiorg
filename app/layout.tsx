@@ -27,7 +27,6 @@ export default async function RootLayout({
         <Toaster />
         {session ? <DashHeader session={session} /> : <Header session={session} />}
         {children}
-        {session == null && <Footer />}
       </body>
     </html>
   );

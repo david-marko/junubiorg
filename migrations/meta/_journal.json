@@ -8,6 +8,13 @@
       "when": 1730303783515,
       "tag": "0000_blue_stature",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1731387335400,
+      "tag": "0001_slippery_daimon_hellstrom",
+      "breakpoints": true
     }
   ]
 }
